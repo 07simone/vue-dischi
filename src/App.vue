@@ -5,38 +5,25 @@
   <IndexHeader/>
 
 
-  <IndexMain/>
+  <IndexMainDiscs/>
   
   </div>
 </template>
 
 <script>
-import axios from"axios"
+
 import IndexHeader from './components/IndexHeader.vue'
-import IndexMain from './components/IndexMainDiscs.vue'
+import IndexMainDiscs from './components/IndexMainDiscs.vue'
 
 
 export default {
   name: 'App',
   components: {
     IndexHeader,
-    IndexMain
-  },
-  created: function(){
-    this.libraryApi();
+    IndexMainDiscs
   },
 
-  methods:{
-    libraryApi(){
-      axios.get("https://flynn.boolean.careers/exercises/api/array/music")
-      .then((risultato)=>{
-        console.table(risultato.data.response)
-      })
-      .catch((errore) =>{
-        console.log(errore)
-      })
-    }
-  }
+
 }
 </script>
 

@@ -1,7 +1,7 @@
 <template>
- <nav class="navbar navbar-light bg-dark">
+<nav class="navbar navbar-light bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <img class="img-fluid" src="https://cantabrialabsdifacooper.it/wp-content/uploads/2021/03/png-clipart-spotify-logo-spotify-computer-icons-podcast-music-apps-miscellaneous-angle-1-e1614848134495-300x300.png" alt="">
   </div>
 </nav>
 </template>
@@ -15,18 +15,9 @@ export default {
 
 
 <style scoped lang="scss">
-/* h3 {
-  margin: 40px 0 0;
+
+img{
+  height: 80px;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-} */
+
 </style>
