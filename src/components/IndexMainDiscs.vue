@@ -1,15 +1,16 @@
 <template>
   <main >
     <div class="container">
-        <div class="row ">
+        <div class="row">
       
-      <div class="col-6 col-md-2 mx-3 my-2 "  v-for="(element,index) in IndexMainDiscs" :key="index">
+      <div class="col-6 col-md-2 mx-3 my-2 " v-for="(element,index) in IndexMainDiscs" :key="index">
         <MainListDisk 
             :nome="element.author"
             :genere="element.genre"
             :poster="element.poster"
             :titolo="element.title"
-            :anno="element.year"/>
+            :anno="element.year"
+          />
       </div>
   
     </div>
@@ -43,7 +44,7 @@ data:function(){
     libraryApi(){
       axios.get("https://flynn.boolean.careers/exercises/api/array/music")
       .then((risultato)=>{
-        console.log(risultato.data.response)
+        console.log(risultato.data)
         this.IndexMainDiscs = risultato.data.response
       })
       .catch((errore) =>{
