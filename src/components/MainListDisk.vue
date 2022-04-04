@@ -1,13 +1,16 @@
 <template>
-    <div class="card p-3">
-        <img  :src="poster" class="card-img-top" :alt="nome">
-      <div class="card-body text-center">
-          <h5 class="card-title">{{nome}}</h5>
-          <h3 class="card-title">{{titolo}}</h3>
+<div>
+<div class="card p-3 text-center ">
+        <img class="img-fluid mb-3"  :src="poster"  :alt="nome">
+      
+          <h5 class="card-title mb-0 fs-3">{{nome}}</h5> 
+          <h3 class="card-title mb-0 fs-3">{{titolo}}</h3>
           <p class="card-text">{{genere}}</p>
           <p class="card-text">{{anno}}</p> 
-      </div>
+      
 </div>
+</div>
+    
 </template>
 
 <script>
@@ -19,11 +22,15 @@ export default {
 </script>
 
 
-<style scoped lang="scss">
+<style  lang="scss">
 
-.card{
+div.card{
+  font-size: 0.9rem;
+  
+  height: 450px;
   background-color: rgb(4, 25, 117);
-  width: 15rem;
+  color:white
+  
 }
 
 </style>

@@ -1,24 +1,18 @@
 <template>
-  <main >
-    <div class="container">
-        <div class="row">
-      
-      <div class="col-6 col-md-2 mx-3 my-2 " v-for="(element,index) in IndexMainDiscs" :key="index">
-        <MainListDisk 
-            :nome="element.author"
-            :genere="element.genre"
-            :poster="element.poster"
-            :titolo="element.title"
-            :anno="element.year"
-          />
-      </div>
-  
-    </div>
-    </div>
-  
-
-
+  <main class="container px-5 mt-4 ">
     
+        <div class="row flex-wrap row-cols-5 g-5 p-3">
+            
+              <MainListDisk 
+                  v-for="(element,index) in filtradischi" :key="index"
+                  :nome="element.author"
+                  :genere="element.genre"
+                  :poster="element.poster"
+                  :titolo="element.title"
+                  :anno="element.year"
+                  class="col"
+                />
+          </div>
   </main>
 </template>
 
@@ -31,49 +25,59 @@ export default {
     MainListDisk,
     
   },
+
+  props : ['selezionaGeneri'],
+
+  
 data:function(){
-    return{
-      IndexMainDiscs: null,
+        return{
+          IndexMainDiscs: [],      
+          generiList : [],      
+        }
+      },
+
+
+  computed:{
+    
+    filtradischi(){
+      if(this.selezionaGeneri === ''){
+        console.log(this.selezionaGeneri)
+        return this.generiList
+        
+      }
+        return this.generiList.filter(
+        (element) => element.genre === this.selezionaGeneri)
+      
     }
   },
-  created: function(){
-    this.libraryApi();
-  },
 
-  methods:{
-    libraryApi(){
-      axios.get("https://flynn.boolean.careers/exercises/api/array/music")
-      .then((risultato)=>{
-        console.log(risultato.data)
-        this.IndexMainDiscs = risultato.data.response
+      
+  created(){
+    
+      axios.get("https://flynn.boolean.careers/exercises/api/array/music")            //chiamata get
+      .then((risultato)=>{                  // quando avrai una risposta il risultato dovrà comportare determinate cose
+      
+      console.log(risultato.data)
+        this.generiList = risultato.data.response       // salvo i dischi nella variabile indexMain
+        // lista generi
+        this.generiList.forEach((element) => {
+          if(!this.IndexMainDiscs.includes(element.genre)){
+            this.IndexMainDiscs.push(element.genre)
+          }
+        });
+        this.$emit('caricaGeneri', this.IndexMainDiscs)
+
       })
-      .catch((errore) =>{
+      .catch((errore) =>{                   // se non dovesse avveninire comunicheremo un determinato errore
         console.log(errore)
       })
     }
   }
   
-}
+
 </script>
 
 
 <style scoped lang="scss">
 
-main{
-  background-color: rgb(12, 15, 39);
-}
-/* h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-} */
-</style>
+</style> 
