@@ -60,11 +60,16 @@ data:function(){
       console.log(risultato.data)
         this.generiList = risultato.data.response       // salvo i dischi nella variabile indexMain
         // lista generi
-        this.generiList.forEach((element) => {
+        /* this.generiList.forEach((element) => {
           if(!this.IndexMainDiscs.includes(element.genre)){
             this.IndexMainDiscs.push(element.genre)
           }
-        });
+        }); */
+        for(let i = 0; i < this.generiList.length; i++){
+          if(!this.IndexMainDiscs.includes(this.generiList[i].genre)){
+            this.IndexMainDiscs.push(this.generiList[i].genre)
+          }
+        }
         this.$emit('caricaGeneri', this.IndexMainDiscs)
 
       })

@@ -10,7 +10,7 @@
               v-model="selezionaGeneri" 
               @change="$emit('cambiaGenre', selezionaGeneri)"
               >
-                <option value="">Open menu genres</option> 
+                <option value="">Generi musicali</option> 
                 <option v-for="(element,index) in generiList" :key="index" :value="element">{{element}}</option>
               </select>
           </div>
